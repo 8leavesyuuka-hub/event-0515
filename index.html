@@ -25,10 +25,16 @@
     background: var(--cream);
     color: var(--text);
     line-height: 1.9;
+    word-break: keep-all;
+    line-break: strict;
+    overflow-wrap: break-word;
   }
+
+  .nowrap { white-space: nowrap; }
 
   /* ========== HERO ========== */
   .hero {
+
     background: linear-gradient(160deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
     color: var(--white);
     text-align: center;
@@ -95,6 +101,7 @@
     position: relative;
     z-index: 1;
     font-family: sans-serif;
+    white-space: nowrap;
   }
 
   .hero h1 {
@@ -117,6 +124,7 @@
     margin-top: 4px;
     font-family: 'Hiragino Mincho ProN', serif;
     font-weight: 400;
+    white-space: nowrap;
   }
 
   .hero-dates {
@@ -131,6 +139,8 @@
     position: relative;
     z-index: 1;
     font-family: sans-serif;
+    /* hero-dates 内は word-break: keep-all が効くので
+       CJK文字間は折れない。スペース位置（「（金）個展」間）で自然に折れる */
   }
 
   /* ========== FREE BANNER ========== */
@@ -272,6 +282,7 @@
     letter-spacing: 0.05em;
     font-family: sans-serif;
     vertical-align: middle;
+    white-space: nowrap;
   }
 
   .schedule-content .badge.recommend {
@@ -343,6 +354,8 @@
     font-family: sans-serif;
     font-size: 0.88rem;
     color: var(--gold);
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
   .addon-desc {
@@ -458,7 +471,7 @@
   }
 
   .total-label { font-size: 0.82rem; color: rgba(255,255,255,0.7); letter-spacing: 0.1em; }
-  .total-amount { font-size: 1.6rem; color: var(--gold-light); font-family: sans-serif; }
+  .total-amount { font-size: 1.6rem; color: var(--gold-light); font-family: sans-serif; white-space: nowrap; }
   .total-breakdown { font-size: 0.75rem; color: rgba(255,255,255,0.5); font-family: sans-serif; }
 
   /* ========== PAYMENT ========== */
@@ -606,6 +619,112 @@
     font-family: sans-serif;
   }
 
+  /* ========== ACCESS ========== */
+  .access-invite {
+    text-align: center;
+    font-size: 0.95rem;
+    color: var(--navy);
+    margin-bottom: 28px;
+    letter-spacing: 0.08em;
+    line-height: 2.2;
+    background: rgba(201,169,110,0.06);
+    border: 1px solid rgba(201,169,110,0.25);
+    border-radius: 2px;
+    padding: 20px 24px;
+  }
+
+  .venue-box {
+    background: var(--white);
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    padding: 22px 22px;
+    margin-bottom: 14px;
+  }
+
+  .venue-name-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px dashed var(--gold);
+  }
+
+  .venue-icon { font-size: 2rem; }
+
+  .venue-title {
+    font-size: 1.15rem;
+    color: var(--navy);
+    letter-spacing: 0.12em;
+    font-weight: 400;
+  }
+
+  .venue-sub {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-family: sans-serif;
+    margin-top: 2px;
+    letter-spacing: 0.03em;
+  }
+
+  .venue-detail {
+    font-size: 0.85rem;
+    color: var(--text);
+    font-family: sans-serif;
+    margin-top: 7px;
+    letter-spacing: 0.03em;
+    line-height: 1.7;
+  }
+
+  .access-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+
+  .access-item {
+    background: var(--white);
+    border: 1px solid #E8DDD0;
+    border-left: 3px solid var(--gold);
+    border-radius: 2px;
+    padding: 14px 18px;
+  }
+
+  .access-from {
+    font-size: 0.85rem;
+    color: var(--navy);
+    margin-bottom: 6px;
+    letter-spacing: 0.05em;
+  }
+
+  .access-route {
+    font-size: 0.8rem;
+    color: var(--text);
+    font-family: sans-serif;
+    line-height: 1.9;
+    padding-left: 4px;
+  }
+
+  .access-route .arrow { color: var(--gold); margin: 0 4px; }
+
+  .map-btn {
+    display: block;
+    text-align: center;
+    color: var(--gold);
+    font-size: 0.85rem;
+    font-family: sans-serif;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    padding: 12px 16px;
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    margin-bottom: 36px;
+    transition: all 0.2s;
+  }
+
+  .map-btn:hover { background: var(--gold-pale); }
+
   /* ========== FOOTER ========== */
   footer {
     background: var(--navy);
@@ -690,8 +809,9 @@
         <span class="schedule-time">随時</span>
         <div class="schedule-content">
           <strong>温熱刺激療法 イトオテルミー</strong>
-          <span class="badge" style="background:rgba(201,169,110,0.15);border-color:rgba(201,169,110,0.4);">15分体験 +¥1,000</span><br>
-          温熱刺激で体を芯から温める療法です。温泉気分が味わえます。<br>
+          <span class="badge" style="background:rgba(201,169,110,0.15);border-color:rgba(201,169,110,0.4);white-space:nowrap;">15分体験 +¥1,000</span><br>
+          温熱刺激で体を芯から温める療法です。<br>
+          温泉気分が味わえます。<br>
           <span class="rain-note">※ 雨天中止</span>
         </div>
       </div>
@@ -700,8 +820,9 @@
         <span class="schedule-time">随時</span>
         <div class="schedule-content">
           <strong>Catch-i 眼筋トレーニング体験</strong>
-          <span class="badge" style="background:rgba(201,169,110,0.15);border-color:rgba(201,169,110,0.4);">体験 +¥500</span><br>
-          EMS技術で目の周りの筋肉にアプローチし、眼精疲労・ドライアイを改善。
+          <span class="badge" style="background:rgba(201,169,110,0.15);border-color:rgba(201,169,110,0.4);white-space:nowrap;">体験 +¥500</span><br>
+          EMS技術で目の周りの筋肉にアプローチし、<br>
+          眼精疲労・ドライアイを改善。
         </div>
       </div>
     </div>
@@ -715,6 +836,53 @@
         あなたの温かいエールが演奏の力になります。
       </div>
     </div>
+
+    <!-- Venue & Access -->
+    <h2 class="section-title">会場・アクセス</h2>
+
+    <p class="access-invite">
+      良かったら、遊びに来てー！<br>
+      ピーターラビットがいそうなところなの。氣が良いところです❣️
+    </p>
+
+    <div class="venue-box">
+      <div class="venue-name-row">
+        <div class="venue-icon">🌿</div>
+        <div>
+          <div class="venue-title">koji cafe</div>
+          <div class="venue-sub">友井ブルーベリーガーデン内</div>
+        </div>
+      </div>
+      <div class="venue-detail">📍 〒194-0003 東京都町田市小川6丁目12−1</div>
+      <div class="venue-detail">🚗 駐車場6台あり（ご利用の方はお問い合わせください）</div>
+    </div>
+
+    <div class="access-list">
+      <div class="access-item">
+        <div class="access-from">🚃 <strong>JR・小田急線 町田駅</strong>から</div>
+        <div class="access-route">
+          町田バスセンター <strong>9番乗り場</strong> より<br>
+          神奈川中央バス（町85・87・88）乗車<span class="arrow">→</span><strong>南町谷原バス停</strong>下車<span class="arrow">→</span>徒歩約5分
+        </div>
+      </div>
+      <div class="access-item">
+        <div class="access-from">🚃 <strong>東急田園都市線 すずかけ台駅</strong>から（バス）</div>
+        <div class="access-route">
+          すずかけ台駅バス停より<br>
+          神奈川中央バス（町85）乗車<span class="arrow">→</span><strong>南町谷原バス停</strong>下車<span class="arrow">→</span>徒歩約5分
+        </div>
+      </div>
+      <div class="access-item">
+        <div class="access-from">🚶 <strong>東急田園都市線 すずかけ台駅</strong>から（徒歩）</div>
+        <div class="access-route">
+          駅より <strong>徒歩約15分</strong>
+        </div>
+      </div>
+    </div>
+
+    <a class="map-btn" href="https://maps.google.com/?q=東京都町田市小川6丁目12-1" target="_blank" rel="noopener">
+      📍 Google マップで確認する →
+    </a>
 
     <!-- Add-on Options -->
     <h2 class="section-title">オプションを追加する</h2>
@@ -765,7 +933,10 @@
         <div class="addon-price">+¥500</div>
       </div>
       <div class="addon-desc">
-        独自のEMS技術「Meel Wave」で目の周りの6つの筋肉を刺激する眼筋トレーニング機器。約96%のユーザーが改善を実感している日本製ウェルネスデバイスを体験できます。<br>
+        独自のEMS技術「<span class="nowrap">Meel Wave</span>」で<br>
+        目の周りの6つの筋肉を刺激する眼筋トレーニング機器。<br>
+        約96%のユーザーが改善を実感している<br>
+        日本製ウェルネスデバイスを体験できます。<br>
         <a href="https://www.catch-i.jp/" target="_blank" rel="noopener" style="color:var(--gold); font-size:0.75rem;">→ Catch-i 公式サイトを見る</a>
       </div>
     </div>
@@ -953,7 +1124,7 @@
 
 <script>
 const CONFIG = {
-  GAS_URL:      'https://script.google.com/macros/s/AKfycbyMeSWVYOPKg0HX5XBX7lka7_RPEuwq2ctgY55TrZkR6i8QGIA8sA3tQxnIX0L-NO2oNg/exec',
+  GAS_URL:      'https://script.google.com/macros/s/XXXXXXXX/exec',
   SQUARE_URL:   'https://square.link/u/XXXXXXXX',
   PAYPAY_LINK:  'https://qr.paypay.ne.jp/p2p01_n0nPJiLbpGEAQgbU',
   PAYPAY_ID:    '@yuukaya',
@@ -1057,7 +1228,7 @@ document.getElementById('regForm').addEventListener('submit', async function(e) 
     email:        document.getElementById('f-email').value,
     phone:        document.getElementById('f-phone').value || '未記入',
     count:        count + '名',
-    event_date:   '5/15',
+    event_date:   '2026年5月15日（金）',
     options:      optionsList,
     birthdate:    addons.star ? document.getElementById('f-birthdate').value : '—',
     birthtime:    addons.star ? (document.getElementById('f-birthtime').value || '不明') : '—',
