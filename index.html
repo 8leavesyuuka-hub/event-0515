@@ -1124,8 +1124,8 @@
 
 <script>
 const CONFIG = {
-  GAS_URL:      'https://script.google.com/macros/s/AKfycbz27-pcDUlo7ivLDQsYSaVwXwuRTr6tAC_NBOqo3n-U6C9tRqLEqEr4dtgpP8FKSvECrw/exec',
-  SQUARE_URL:   'https://square.link/u/XXXXXXXX',
+  GAS_URL:      'https://script.google.com/macros/s/AKfycbyax31IL3uyy4TSsuFS68jPI3GWDksWR9tnUyz7OM9W9go9iHqJfW-Qc16t8mw9H04u/exec',
+  SQUARE_URL:   'https://square.link/u/Wj0yb44A',
   PAYPAY_LINK:  'https://qr.paypay.ne.jp/p2p01_n0nPJiLbpGEAQgbU',
   PAYPAY_ID:    '@yuukaya',
   BANK: {
@@ -1241,6 +1241,7 @@ document.getElementById('regForm').addEventListener('submit', async function(e) 
                 : selectedPayment === 'bank'   ? '銀行振り込み'
                 : '当日現地払い',
     total_amount: '¥' + total.toLocaleString(),
+    sheet_name:   '申し込み',
     _subject:     '【OYS 5/15 申し込み】' + document.getElementById('f-name').value + ' 様',
   };
 
